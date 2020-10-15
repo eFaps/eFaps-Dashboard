@@ -1,18 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { createCustomElement } from '@angular/elements';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class DashboardModule {
+  constructor(injector: Injector) {
+     const dashboardComponent = createCustomElement(DashboardComponent, { injector });
+     customElements.define('efaps-dashboard', dashboardComponent);
+   }
+   ngDoBootstrap() {}
+ }

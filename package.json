@@ -1,5 +1,5 @@
 {
-  "name": "e-faps-dashboard",
+  "name": "efaps-dashboard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,18 +7,27 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build1": "ng build --base-href=./dashboard --output-hashing=none --watch",
+    "el-build": "npm run el-build-task && npm run el-package-task",
+    "el-build-task": "ng build --prod --output-hashing=none",
+    "el-package-task": "bash -c 'cat ./dist/efaps-dashboard/{polyfills,runtime,main}.js > ./dist/efaps-dashboard.js'"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.0",
+    "@angular/cdk": "^10.2.5",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
+    "@angular/elements": "^10.1.5",
     "@angular/forms": "~10.1.0",
+    "@angular/material": "^10.2.5",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "@webcomponents/custom-elements": "^1.4.2",
+    "material": "^0.4.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
