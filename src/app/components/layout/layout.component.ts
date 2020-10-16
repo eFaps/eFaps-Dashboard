@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { GridsterConfig, GridsterItem } from "angular-gridster2";
+import { LayoutService } from "src/app/services/layout.service";
 
 @Component({
   selector: "app-layout",
@@ -7,18 +8,12 @@ import { GridsterConfig, GridsterItem } from "angular-gridster2";
   styleUrls: ["./layout.component.scss"]
 })
 export class LayoutComponent implements OnInit {
-  options: GridsterConfig = {
-    draggable: {
-      enabled: true
-    },
-    pushItems: true,
-    resizable: {
-      enabled: true
-    }
-  };
-  layout: GridsterItem[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  get options(): GridsterConfig {
+    return this.layoutService.options;
+  }
+  get layout(): GridsterItem[] {
+    return this.layoutService.layout;
+  }
+  constructor(public layoutService: LayoutService) {}
+  ngOnInit() {}
 }
