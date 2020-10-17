@@ -12,11 +12,11 @@ import { Dashboard } from '../models/dashboard';
 export class LayoutService {
   public options: GridsterConfig = {
     draggable: {
-      enabled: true
+      enabled: false
     },
-    pushItems: true,
+    pushItems: false,
     resizable: {
-      enabled: true
+      enabled: false
     }
   };
   public layout: GridsterItem[] = [];

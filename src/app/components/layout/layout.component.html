@@ -1,9 +1,10 @@
 <div class="toolbar">
-  <button (click)="layoutService.addItem()">Add Item</button>
+  <button *ngIf="editMode" (click)="layoutService.addItem()">Add Item</button>
+  <button (click)="toggleEditMode()">Toggle Edit</button>
 </div>
 <gridster [options]="options">
   <gridster-item *ngFor="let item of layout" [item]="item">
-    <button
+    <button *ngIf="editMode"
       (click)="layoutService.deleteItem(item)"
     >
       Delete Item
