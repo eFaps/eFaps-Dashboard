@@ -1,5 +1,5 @@
 import { Injector, NgModule } from '@angular/core';
-
+import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,6 +21,7 @@ import { createCustomElement } from '@angular/elements';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
@@ -30,6 +31,7 @@ import { createCustomElement } from '@angular/elements';
     GridsterModule,
   ],
   providers: [],
+  entryComponents: [LayoutComponent],
 })
 export class DashboardModule {
   constructor(injector: Injector) {

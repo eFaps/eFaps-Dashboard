@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build1": "ng build --base-href=./dashboard --output-hashing=none --watch",
+    "build:watch": "ng build --base-href=/eFaps/servlet/apps/dashboard/ --watch",
     "el-build": "npm run el-build-task && npm run el-package-task",
     "el-build-task": "ng build --prod --output-hashing=none",
     "el-package-task": "bash -c 'cat ./dist/efaps-dashboard/{polyfills,runtime,main}.js > ./dist/efaps-dashboard.js'"
@@ -26,7 +26,6 @@
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
-
     "@webcomponents/custom-elements": "^1.4.2",
     "angular-gridster2": "^10.1.6",
     "material": "^0.4.3",
@@ -44,6 +43,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/uuid": "^8.3.0",
     "codelyzer": "^6.0.0",
+    "import-sort": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -51,9 +52,17 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-import-sort": "^0.0.6",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "importSort": {
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "module"
+    }
   }
 }
