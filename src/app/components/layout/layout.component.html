@@ -1,13 +1,15 @@
 <div class="toolbar">
   <button *ngIf="editMode" (click)="layoutService.addItem()">Add Item</button>
-  <button (click)="toggleEditMode()">Toggle Edit</button>
 </div>
 <gridster [options]="options">
   <gridster-item *ngFor="let item of layout" [item]="item">
-    <button *ngIf="editMode"
-      (click)="layoutService.deleteItem(item)"
-    >
+    <button *ngIf="editMode" (click)="layoutService.deleteItem(item)">
       Delete Item
     </button>
   </gridster-item>
 </gridster>
+<div class="editBtn">
+  <button (click)="toggleEditMode()" mat-fab color="primary">
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>

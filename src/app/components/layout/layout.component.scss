@@ -4,4 +4,10 @@
     height: calc(100vh - 115px);
     flex-direction: column;
   }
+
+  .editBtn {
+    bottom: 5px;
+    position: absolute;
+    left: 5px;
+  }
 }
