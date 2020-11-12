@@ -8,10 +8,8 @@ import { LayoutService } from "src/app/services/layout.service";
   styleUrls: ["./layout.component.scss"]
 })
 export class LayoutComponent implements OnInit {
-  editMode : boolean = false;
-  constructor(public layoutService: LayoutService) {
-
-  }
+  editMode: boolean = false;
+  constructor(public layoutService: LayoutService) {}
   ngOnInit() {}
 
   get options(): GridsterConfig {
@@ -27,6 +25,9 @@ export class LayoutComponent implements OnInit {
     this.layoutService.options.draggable.enabled = this.editMode;
     this.layoutService.options.resizable.enabled = this.editMode;
     this.changedOptions();
+    if (!this.editMode) {
+      this.layoutService.updateDashboard().subscribe();
+    }
   }
 
   changedOptions(): void {

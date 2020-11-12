@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { GridsterConfig, GridsterItem } from "angular-gridster2";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 import { v4 as uuid } from "uuid";
 
-import { Dashboard } from '../models/dashboard';
+import { Dashboard } from "../models/dashboard";
 
 @Injectable({
   providedIn: "root"
@@ -20,12 +20,14 @@ export class LayoutService {
     }
   };
   public layout: GridsterItem[] = [];
+  private dashboard: Dashboard;
 
   constructor(private http: HttpClient) {
     this.loadDashboard().subscribe({
       next: dashboard => {
         if (dashboard && dashboard.tabs) {
-          this.layout = dashboard.tabs[0].layout
+          this.dashboard = dashboard;
+          this.layout = dashboard.tabs[0].layout;
         }
       }
     });
@@ -49,5 +51,10 @@ export class LayoutService {
   loadDashboard(): Observable<Dashboard> {
     const requestUrl = `../../rest/ui/dashboard`;
     return this.http.get<Dashboard>(requestUrl);
+  }
+
+  updateDashboard(): Observable<any> {
+    const requestUrl = `../../rest/ui/dashboard`;
+    return this.http.post(requestUrl, this.dashboard);
   }
 }
