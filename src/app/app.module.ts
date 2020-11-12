@@ -10,6 +10,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ChartsModule } from '@rinminase/ng-charts';
 import { GridsterModule } from "angular-gridster2";
 
 import { EditComponent } from "./components/edit/edit.component";
@@ -29,7 +30,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     MatButtonModule,
     MatDialogModule,
     LayoutModule,
-    GridsterModule
+    GridsterModule,
+    ChartsModule
   ],
   providers: [],
   entryComponents: [LayoutComponent]
