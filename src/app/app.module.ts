@@ -1,23 +1,23 @@
-import { Injector, NgModule } from '@angular/core';
+import { LayoutModule } from "@angular/cdk/layout";
 import { HttpClientModule } from "@angular/common/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { GridsterModule } from 'angular-gridster2';
-import { LayoutComponent } from './components/layout/layout.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { createCustomElement } from '@angular/elements';
+import { Injector, NgModule } from "@angular/core";
+import { createCustomElement } from "@angular/elements";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { GridsterModule } from "angular-gridster2";
+
+import { EditComponent } from "./components/edit/edit.component";
+import { LayoutComponent } from "./components/layout/layout.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    LayoutComponent,
-  ],
+  declarations: [DashboardComponent, LayoutComponent, EditComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,16 +27,19 @@ import { createCustomElement } from '@angular/elements';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     LayoutModule,
-    GridsterModule,
+    GridsterModule
   ],
   providers: [],
-  entryComponents: [LayoutComponent],
+  entryComponents: [LayoutComponent]
 })
 export class DashboardModule {
   constructor(injector: Injector) {
-     const dashboardComponent = createCustomElement(DashboardComponent, { injector });
-     customElements.define('efaps-dashboard', dashboardComponent);
-   }
-   ngDoBootstrap() {}
- }
+    const dashboardComponent = createCustomElement(DashboardComponent, {
+      injector
+    });
+    customElements.define("efaps-dashboard", dashboardComponent);
+  }
+  ngDoBootstrap() {}
+}

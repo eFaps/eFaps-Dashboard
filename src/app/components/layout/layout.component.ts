@@ -1,6 +1,13 @@
 import { Component, OnInit } from "@angular/core";
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef
+} from "@angular/material/dialog";
 import { GridsterConfig, GridsterItem } from "angular-gridster2";
 import { LayoutService } from "src/app/services/layout.service";
+
+import { EditComponent } from "../edit/edit.component";
 
 @Component({
   selector: "efaps-dashboard-layout",
@@ -9,7 +16,9 @@ import { LayoutService } from "src/app/services/layout.service";
 })
 export class LayoutComponent implements OnInit {
   editMode: boolean = false;
-  constructor(public layoutService: LayoutService) {}
+  constructor(public dialog: MatDialog, public layoutService: LayoutService) {
+    console.log("init")
+  }
   ngOnInit() {}
 
   get options(): GridsterConfig {
@@ -32,5 +41,14 @@ export class LayoutComponent implements OnInit {
 
   changedOptions(): void {
     this.layoutService.options.api.optionsChanged();
+  }
+
+  edit(item) {
+    const dialogRef = this.dialog.open(EditComponent, {
+      minWidth: '95vw',
+      minHeight: '95vh',
+      data: item
+    });
+    console.log(item);
   }
 }

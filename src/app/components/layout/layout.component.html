@@ -3,9 +3,19 @@
 </div>
 <gridster [options]="options">
   <gridster-item *ngFor="let item of layout" [item]="item">
-    <button *ngIf="editMode" (click)="layoutService.deleteItem(item)">
-      Delete Item
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="item-menu" *ngIf="editMode">
+      <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="layoutService.deleteItem(item)">
+        <mat-icon>delete_forever</mat-icon>
+        <span>Delete</span>
+      </button>
+      <button mat-menu-item (click)="edit(item)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+    </mat-menu>
   </gridster-item>
 </gridster>
 <div class="editBtn">
