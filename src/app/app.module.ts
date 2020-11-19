@@ -4,13 +4,14 @@ import { Injector, NgModule } from "@angular/core";
 import { createCustomElement } from "@angular/elements";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatSelectModule } from "@angular/material/select";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ChartsModule } from '@rinminase/ng-charts';
 import { GridsterModule } from "angular-gridster2";
 
 import { EditComponent } from "./components/edit/edit.component";
@@ -29,9 +30,10 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatSelectModule,
+    MatFormFieldModule,
     LayoutModule,
-    GridsterModule,
-    ChartsModule
+    GridsterModule
   ],
   providers: [],
   entryComponents: [LayoutComponent]

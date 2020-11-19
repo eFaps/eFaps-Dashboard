@@ -7,3 +7,11 @@ export interface Dashboard {
 export interface Tab {
   layout: GridsterItem[]
 }
+
+export interface Widget {
+  type: WidgetType
+}
+
+export enum WidgetType {
+  BARCHART = "BARCHART"
+}

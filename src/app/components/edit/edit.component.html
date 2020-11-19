@@ -1,1 +1,9 @@
 <p>edit works!</p>
+<mat-form-field appearance="fill">
+  <mat-label>Visualization Type</mat-label>
+  <mat-select [(value)]="selectedType" name="type">
+    <mat-option *ngFor="let type of types" [value]="type">
+      {{type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
