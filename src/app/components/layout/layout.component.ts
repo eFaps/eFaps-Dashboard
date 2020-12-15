@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef
+  MatDialog
 } from "@angular/material/dialog";
 import { GridsterConfig, GridsterItem } from "angular-gridster2";
 import { LayoutService } from "src/app/services/layout.service";
@@ -17,9 +15,9 @@ import { EditComponent } from "../edit/edit.component";
 export class LayoutComponent implements OnInit {
   editMode: boolean = false;
   constructor(public dialog: MatDialog, public layoutService: LayoutService) {
-    console.log("init")
+    console.log("init");
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   get options(): GridsterConfig {
     return this.layoutService.options;
@@ -43,11 +41,18 @@ export class LayoutComponent implements OnInit {
     this.layoutService.options.api.optionsChanged();
   }
 
-  edit(item) {
+  edit(item: GridsterItem) {
     const dialogRef = this.dialog.open(EditComponent, {
-      minWidth: '95vw',
-      minHeight: '95vh',
+      minWidth: "95vw",
+      minHeight: "95vh",
       data: item
+    });
+    dialogRef.afterClosed().subscribe({
+      next: data => {
+        if (data) {
+          this.layoutService.updateDashboard().subscribe();
+        }
+      }
     });
     console.log(item);
   }

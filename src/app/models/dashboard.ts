@@ -1,17 +1,24 @@
-import { GridsterItem } from 'angular-gridster2';
+import { GridsterItem } from "angular-gridster2";
+
+export interface DashboardItem extends GridsterItem {
+  widget?: Widget;
+}
 
 export interface Dashboard {
-  tabs: Tab[]
+  tabs: Tab[];
 }
 
 export interface Tab {
-  layout: GridsterItem[]
+  layout: DashboardItem[];
 }
 
 export interface Widget {
-  type: WidgetType
+  identifier: string;
+  type: WidgetType;
+  eql: string;
 }
 
 export enum WidgetType {
-  BARCHART = "BARCHART"
+  BARCHART = "BARCHART",
+  TABLE = "TABLE"
 }

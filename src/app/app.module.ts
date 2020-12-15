@@ -2,12 +2,14 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { HttpClientModule } from "@angular/common/http";
 import { Injector, NgModule } from "@angular/core";
 import { createCustomElement } from "@angular/elements";
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSelectModule } from "@angular/material/select";
 import { BrowserModule } from "@angular/platform-browser";
@@ -32,8 +34,10 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatInputModule,
     LayoutModule,
-    GridsterModule
+    GridsterModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   entryComponents: [LayoutComponent]
@@ -45,5 +49,5 @@ export class DashboardModule {
     });
     customElements.define("efaps-dashboard", dashboardComponent);
   }
-  ngDoBootstrap() {}
+  ngDoBootstrap() { }
 }

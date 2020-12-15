@@ -1,9 +1,21 @@
-<p>edit works!</p>
-<mat-form-field appearance="fill">
-  <mat-label>Visualization Type</mat-label>
-  <mat-select [(value)]="selectedType" name="type">
-    <mat-option *ngFor="let type of types" [value]="type">
-      {{type}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<h1 mat-dialog-title>Update widget</h1>
+<div mat-dialog-content>
+  <form [formGroup]="widgetForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Visualization Type</mat-label>
+      <mat-select [(value)]="selectedType" name="type" formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>EQL</mat-label>
+      <textarea matInput placeholder="EQL" formControlName="eql"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+</div>

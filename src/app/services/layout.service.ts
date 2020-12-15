@@ -4,7 +4,7 @@ import { GridsterConfig, GridsterItem } from "angular-gridster2";
 import { Observable } from "rxjs";
 import { v4 as uuid } from "uuid";
 
-import { Dashboard } from "../models/dashboard";
+import { Dashboard, DashboardItem } from "../models/dashboard";
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +19,7 @@ export class LayoutService {
       enabled: false
     }
   };
-  public layout: GridsterItem[] = [];
+  public layout: DashboardItem[] = [];
   private dashboard: Dashboard;
 
   constructor(private http: HttpClient) {
