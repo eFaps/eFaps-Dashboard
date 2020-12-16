@@ -18,7 +18,17 @@ export interface Widget {
   eql: string;
 }
 
+export interface TableWidget extends Widget {
+  columns: Column[];
+  values: any[];
+}
+
 export enum WidgetType {
   BARCHART = "BARCHART",
   TABLE = "TABLE"
+}
+
+export interface Column {
+  field: string;
+  header: string;
 }

@@ -1,4 +1,2 @@
-<p>widget works!</p>
-
-<span *ngIf="widget?.type=='TABLE'">TABLE</span>
-<span *ngIf="widget?.type=='BARCHART'">BARCHART</span>
+<efaps-dashboard-table *ngIf="widget?.type=='TABLE'" [widget]="widget">TABLE</efaps-dashboard-table>
+<efaps-dashboard-barchart *ngIf="widget?.type=='BARCHART'" [widget]="widget">BARCHART</efaps-dashboard-barchart>

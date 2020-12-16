@@ -15,7 +15,6 @@ export class WidgetComponent implements OnInit {
 
   @Input()
   set widget(widget: Widget) {
-    console.log(widget);
     if (widget) {
       this._widget = widget;
     }

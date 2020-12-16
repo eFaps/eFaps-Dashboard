@@ -13,6 +13,22 @@
       <mat-label>EQL</mat-label>
       <textarea matInput placeholder="EQL" formControlName="eql"></textarea>
     </mat-form-field>
+    <ng-container *ngIf="selectedType=='TABLE'">
+      <span>Columns</span>
+      <div class="column" *ngFor="let colGrp of widgetForm.controls.columns.controls">
+        <mat-form-field appearance="fill">
+          <mat-label>Field</mat-label>
+          <input matInput [formControl]="colGrp.controls.field">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Header</mat-label>
+          <input matInput [formControl]="colGrp.controls.header">
+        </mat-form-field>
+      </div>
+      <button mat-mini-fab color="accent" aria-label="add" (click)="addColumn()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
   </form>
 </div>
 <div mat-dialog-actions>
