@@ -21,9 +21,11 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const type = this.data.widget ? this.data.widget.type : "";
+    const eql = this.data.widget ? this.data.widget.eql : "";
     this.widgetForm = this.fb.group({
-      type: [this.data.widget.type],
-      eql: [this.data.widget.eql]
+      type: [type],
+      eql: [eql]
     });
   }
 

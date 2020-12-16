@@ -19,9 +19,10 @@ import { GridsterModule } from "angular-gridster2";
 import { EditComponent } from "./components/edit/edit.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { WidgetComponent } from './components/widget/widget.component';
 
 @NgModule({
-  declarations: [DashboardComponent, LayoutComponent, EditComponent],
+  declarations: [DashboardComponent, LayoutComponent, EditComponent, WidgetComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
