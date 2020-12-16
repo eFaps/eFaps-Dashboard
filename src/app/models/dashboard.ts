@@ -15,6 +15,7 @@ export interface Tab {
 export interface Widget {
   identifier: string;
   type: WidgetType;
+  title: string;
   eql: string;
 }
 

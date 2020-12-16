@@ -28,10 +28,12 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     const type = this.data.widget ? this.data.widget.type : "";
+    const title = this.data.widget ? this.data.widget.title : "";
     const eql = this.data.widget ? this.data.widget.eql : "";
     this.widgetForm = this.fb.group({
       type: [type],
       eql: [eql],
+      title: [title],
       columns: this.fb.array([])
     });
     this.selectedType = WidgetType[type];
@@ -72,8 +74,9 @@ export class EditComponent implements OnInit {
     } else {
       identifier = uuid();
     }
+    const title = this.widgetForm.value.title;
     const eql = this.widgetForm.value.eql;
-    this.data.widget = { identifier, type: this.selectedType, eql };
+    this.data.widget = { identifier, type: this.selectedType, eql, title };
     switch (this.selectedType) {
       case "TABLE":
         (<TableWidget>this.data.widget).columns = this.widgetForm.value.columns;
