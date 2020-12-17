@@ -3,3 +3,13 @@
   z-index: 50;
   bottom: 3px;
 }
+
+::ng-deep .dmat-tab-header {
+  height: 0;
+}
+
+::ng-deep .hiddenHeader {
+  mat-tab-header {
+    height: 0;
+  }
+}

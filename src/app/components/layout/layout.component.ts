@@ -15,6 +15,8 @@ import { EditComponent } from "../edit/edit.component";
 export class LayoutComponent implements OnInit {
   _editMode: boolean = false;
   _layout: DashboardItem[] = [];
+  @Input() hiddenHeader = false;
+
   constructor(public dialog: MatDialog, public layoutService: LayoutService) { }
   ngOnInit() { }
 

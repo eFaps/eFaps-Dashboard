@@ -3,7 +3,7 @@
     <mat-icon>add</mat-icon>
   </button>
 </div>
-<gridster [options]="options">
+<gridster [options]="options" [ngClass]="hiddenHeader ? 'hiddenHeader' : ''">
   <gridster-item *ngFor="let item of layout" [item]="item">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="item-menu" *ngIf="editMode">
       <mat-icon>more_vert</mat-icon>

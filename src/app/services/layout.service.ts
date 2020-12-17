@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { GridsterConfig, GridsterItem } from "angular-gridster2";
+import { GridsterConfig } from "angular-gridster2";
 import { Observable } from "rxjs";
 
 
@@ -17,7 +17,8 @@ export class LayoutService {
     pushItems: false,
     resizable: {
       enabled: false
-    }
+    },
+    margin: 3
   };
   public layout: DashboardItem[] = [];
 

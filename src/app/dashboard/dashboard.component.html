@@ -6,7 +6,7 @@
     <mat-icon>add</mat-icon>
   </button>
 </div>
-<mat-tab-group mat-align-tabs="start" [(selectedIndex)]="selectedIndex" (selectedIndexChange)="setSelected($event)">
+<mat-tab-group mat-align-tabs="start" [(selectedIndex)]="selectedIndex" (selectedIndexChange)="setSelected($event)" [ngClass]="!editMode && tabs.length == 1 ? 'hiddenHeader' :''">
   <mat-tab *ngFor="let tab of tabs; let index = index">
     <ng-template mat-tab-label *ngIf="!editMode">
     {{tab.label}}
@@ -20,7 +20,7 @@
       </button>
     </ng-template>
     <ng-template matTabContent>
-      <efaps-dashboard-layout [layout]="tab.layout" [editMode]="editMode"></efaps-dashboard-layout>
+      <efaps-dashboard-layout [layout]="tab.layout" [editMode]="editMode" [hiddenHeader]="!editMode && tabs.length == 1"></efaps-dashboard-layout>
     </ng-template>
   </mat-tab>
 </mat-tab-group>
