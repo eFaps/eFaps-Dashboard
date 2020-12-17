@@ -9,6 +9,7 @@ export interface Dashboard {
 }
 
 export interface Tab {
+  label: String;
   layout: DashboardItem[];
 }
 

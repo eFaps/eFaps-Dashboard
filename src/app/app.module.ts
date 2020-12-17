@@ -12,6 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSelectModule } from "@angular/material/select";
+import { MatTabsModule } from "@angular/material/tabs";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { GridsterModule } from "angular-gridster2";
@@ -46,6 +47,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTabsModule,
     LayoutModule,
     GridsterModule,
     ReactiveFormsModule,

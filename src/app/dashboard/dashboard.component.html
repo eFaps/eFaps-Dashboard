@@ -1,1 +1,26 @@
-<efaps-dashboard-layout></efaps-dashboard-layout>
+<div class="btns">
+  <button mat-mini-fab color="primary" (click)="toggleEditMode()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-mini-fab color="primary" *ngIf="editMode" (click)="addTab()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<mat-tab-group mat-align-tabs="start" [(selectedIndex)]="selectedIndex" (selectedIndexChange)="setSelected($event)">
+  <mat-tab *ngFor="let tab of tabs; let index = index">
+    <ng-template mat-tab-label *ngIf="!editMode">
+    {{tab.label}}
+    </ng-template>
+    <ng-template mat-tab-label *ngIf="editMode">
+      <mat-form-field appearance="fill">
+        <input matInput type="text" value="{{tab.label}}" (change)="tab.label = $event.target.value">
+      </mat-form-field>
+      <button mat-mini-fab color="primary" (click)="deleteTab(index)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-template>
+    <ng-template matTabContent>
+      <efaps-dashboard-layout [layout]="tab.layout" [editMode]="editMode"></efaps-dashboard-layout>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

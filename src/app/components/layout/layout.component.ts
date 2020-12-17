@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  MatDialog
-} from "@angular/material/dialog";
+import { Component, Input, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { GridsterConfig, GridsterItem } from "angular-gridster2";
+import { DashboardItem } from "src/app/models/dashboard";
 import { LayoutService } from "src/app/services/layout.service";
+import { v4 as uuid } from "uuid";
 
 import { EditComponent } from "../edit/edit.component";
 
@@ -13,28 +13,39 @@ import { EditComponent } from "../edit/edit.component";
   styleUrls: ["./layout.component.scss"]
 })
 export class LayoutComponent implements OnInit {
-  editMode: boolean = false;
-  constructor(public dialog: MatDialog, public layoutService: LayoutService) {
-    console.log("init");
-  }
+  _editMode: boolean = false;
+  _layout: DashboardItem[] = [];
+  constructor(public dialog: MatDialog, public layoutService: LayoutService) { }
   ngOnInit() { }
+
+  @Input()
+  set layout(dashboardItems: DashboardItem[]) {
+    console.log(dashboardItems);
+    if (dashboardItems) {
+      this._layout = dashboardItems;
+    } else {
+      this._layout = [];
+    }
+  }
+  get layout(): DashboardItem[] {
+    return this._layout;
+  }
 
   get options(): GridsterConfig {
     return this.layoutService.options;
   }
-  get layout(): GridsterItem[] {
-    return this.layoutService.layout;
+
+  get editMode() {
+    return this._editMode;
   }
 
-  toggleEditMode() {
-    this.editMode = !this.editMode;
-    this.layoutService.options.pushItems = this.editMode;
-    this.layoutService.options.draggable.enabled = this.editMode;
-    this.layoutService.options.resizable.enabled = this.editMode;
+  @Input()
+  set editMode(editmode: boolean) {
+    this._editMode = editmode;
+    this.layoutService.options.pushItems = this._editMode;
+    this.layoutService.options.draggable.enabled = this._editMode;
+    this.layoutService.options.resizable.enabled = this._editMode;
     this.changedOptions();
-    if (!this.editMode) {
-      this.layoutService.updateDashboard().subscribe();
-    }
   }
 
   changedOptions(): void {
@@ -50,10 +61,23 @@ export class LayoutComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: data => {
         if (data) {
-          this.layoutService.updateDashboard().subscribe();
+          //this.layoutService.updateDashboard().subscribe();
         }
       }
     });
     console.log(item);
+  }
+  addItem() {
+    this.layout.push({
+      cols: 5,
+      id: uuid(),
+      rows: 5,
+      x: 0,
+      y: 0
+    });
+  }
+  deleteItem(id: string): void {
+    const item = this.layout.find(d => d.id === id);
+    this.layout.splice(this.layout.indexOf(item), 1);
   }
 }
